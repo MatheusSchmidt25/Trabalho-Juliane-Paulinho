@@ -19,7 +19,7 @@ public class Produto {
 
     private String descricao;
 
-    private String valor ;
+    private Double valor ;
 
     private String categoria;
 

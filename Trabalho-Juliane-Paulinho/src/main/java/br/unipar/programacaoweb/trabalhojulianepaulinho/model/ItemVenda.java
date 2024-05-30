@@ -1,10 +1,14 @@
 package br.unipar.programacaoweb.trabalhojulianepaulinho.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.naming.Name;
+
+@Entity
+@Getter
+@Setter
 public class ItemVenda {
 
     @Id
@@ -18,9 +22,13 @@ public class ItemVenda {
     private double valorTotal;
 
     @ManyToOne
+    @JoinColumn(name = "venda_id" )
     private Venda venda;
 
     @ManyToOne
+    @JoinColumn(name = "produto_id" )
     private Produto produto;
+
+
 
 }
