@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vendas</title>
+
+</head>
+<body>
+<h1>Hello World</h1>
+<table class="table-container">
+    <thead>
+    <tr>
+        <th>Cliente</th>
+        <th>Medico</th>
+        <th>Data/Hora da consulta</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="atendimento : ${atendimentos}">
+        <td th:text="${atendimento.medico.nome}"></td>
+        <td th:text="${atendimento.paciente.nome}"></td>
+        <td th:text="${atendimento.data_hora}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
