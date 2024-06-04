@@ -11,4 +11,17 @@
         <maven.compiler.target>20</maven.compiler.target>
         <exec.mainClass>com.mycompany.trabalho.juliane.paulinho.desk.TrabalhoJulianePaulinhoDesk</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.11.0</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.17.1</version>
+        </dependency>
+    </dependencies>
 </project>

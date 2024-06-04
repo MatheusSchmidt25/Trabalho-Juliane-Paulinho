@@ -4,6 +4,10 @@
  */
 package com.mycompany.trabalho.juliane.paulinho.desk;
 
+import dto.ClienteDTO;
+import java.util.List;
+import service.ClientesService;
+
 /**
  *
  * @author aluno
@@ -15,6 +19,16 @@ public class VendaFrame extends javax.swing.JFrame {
      */
     public VendaFrame() {
         initComponents();
+        try {
+            List<ClienteDTO> cli
+                    = ClientesService.buscaCliente();
+            for (ClienteDTO clienteDTO : cli) {
+                jComboBox1.addItem(clienteDTO.getNome());
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+
     }
 
     /**
@@ -40,7 +54,6 @@ public class VendaFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Venda");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 jComboBox1AncestorAdded(evt);
@@ -155,37 +168,6 @@ public class VendaFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VendaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VendaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VendaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VendaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VendaFrame().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
