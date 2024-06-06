@@ -17,10 +17,10 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String descricao;
+        private String descricao;
 
-    private Double valor ;
+        private Double valor ;
 
-    private String categoria;
+        private String categoria;
 
 }

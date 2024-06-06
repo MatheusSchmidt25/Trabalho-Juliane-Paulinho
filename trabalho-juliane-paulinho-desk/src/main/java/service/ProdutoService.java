@@ -7,25 +7,24 @@ package service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mycompany.trabalho.juliane.paulinho.desk.Util;
-import dto.ClienteDTO;
+import dto.ProdutoDTO;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
+import com.mycompany.trabalho.juliane.paulinho.desk.Util;
 
 /**
  *
  * @author aluno
  */
-public class ClientesService {
+public class ProdutoService {
 
-    private static String URLWEBSERVICE = "http://localhost:8080/api/cliente";
+    private static String URLWEBSERVICE = "http://localhost:8080/api/produto";
     private static int SUCESSO = 200;
 
-    public static List<ClienteDTO> buscaCliente() throws Exception {
+    public static List<ProdutoDTO> buscaProduto() throws Exception {
         String urlChamada = URLWEBSERVICE;
 
         try {
@@ -41,20 +40,20 @@ public class ClientesService {
                     new InputStreamReader(conexao.getInputStream()));
 
             String json = Util.converteJsonString(resposta);
-            List<ClienteDTO> dto = unmarshalFromJson(json);
+            List<ProdutoDTO> dto = unmarshalFromJson(json);
             return dto;
 
         } catch (Exception ex) {
-            throw new Exception("Erro ao retornar cliente: " + ex);
+            throw new Exception("Erro ao retornar produto: " + ex);
         }
     }
 
-    private static List<ClienteDTO> unmarshalFromJson(String json)
+    private static List<ProdutoDTO> unmarshalFromJson(String json)
             throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
-        List<ClienteDTO> clienteList = mapper.readValue(json, new TypeReference<List<ClienteDTO>>() {
+        List<ProdutoDTO> produtoList = mapper.readValue(json, new TypeReference<List<ProdutoDTO>>() {
         });
-        return clienteList;
+        return produtoList;
 
     }
 
