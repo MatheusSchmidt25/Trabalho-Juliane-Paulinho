@@ -14,8 +14,8 @@ public class ItemVendaDTO {
     private int quantidade;
     private double valorUnitario;
     private double valorTotal;
-    private int vendaID;
-    private int produtoID;
+    private VendaDTO venda;
+    private ProdutoDTO produto;
 
     public Integer getId() {
         return id;
@@ -49,20 +49,25 @@ public class ItemVendaDTO {
         this.valorTotal = valorTotal;
     }
 
-    public int getVendaID() {
-        return vendaID;
+    public VendaDTO getVenda() {
+        return venda;
     }
 
-    public void setVendaID(int vendaID) {
-        this.vendaID = vendaID;
+    public void setVenda(VendaDTO venda) {
+        this.venda = venda;
     }
 
-    public int getProdutoID() {
-        return produtoID;
+    public ProdutoDTO getProduto() {
+        return produto;
     }
 
-    public void setProdutoID(int produtoID) {
-        this.produtoID = produtoID;
+    public void setProduto(ProdutoDTO produto) {
+        this.produto = produto;
+    }
+
+    @Override
+    public String toString() {
+        return "ItemVendaDTO{" + "id=" + id + ", quantidade=" + quantidade + ", valorUnitario=" + valorUnitario + ", valorTotal=" + valorTotal + ", vendaID=" + venda + ", produtoID=" + produto + '}';
     }
 
 }

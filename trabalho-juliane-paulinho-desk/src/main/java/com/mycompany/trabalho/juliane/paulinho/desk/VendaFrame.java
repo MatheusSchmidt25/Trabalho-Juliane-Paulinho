@@ -7,19 +7,27 @@ package com.mycompany.trabalho.juliane.paulinho.desk;
 import dto.ClienteDTO;
 import dto.ItemVendaDTO;
 import dto.ProdutoDTO;
+import dto.VendaDTO;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import service.ClientesService;
 import service.ProdutoService;
+import service.VendaService;
+import service.ItemVendaService;
 
 /**
  *
  * @author aluno
  */
 public class VendaFrame extends javax.swing.JFrame {
-    
+
     List<ClienteDTO> cli;
     List<ProdutoDTO> pro;
     ClienteDTO selectedCli;
@@ -27,9 +35,8 @@ public class VendaFrame extends javax.swing.JFrame {
     List<ItemVendaDTO> listProdSelected;
     private DefaultTableModel modelo = new DefaultTableModel();
     private int linhaSelecionada = -1;
-    
-    public void carregarTabela (){
-        
+
+    public void carregarTabela() {
         modelo.addColumn("Decrição");
         modelo.addColumn("Categoria");
         modelo.addColumn("Valor unitário");
@@ -37,12 +44,33 @@ public class VendaFrame extends javax.swing.JFrame {
         modelo.addColumn("Valor total");
         tabela.setModel(modelo);
     }
-    
+
+    public void limparTela() {
+        tabela.removeAll();
+        obs.setText("");
+        tfTotal.setText("");
+        jTextField1.setText("");
+    }
+
+    public static String getDataAtualFormatada() {
+        // Obtém a data atual
+        LocalDate dataAtual = LocalDate.now();
+
+        // Define o padrão de formatação
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        // Formata a data atual usando o padrão
+        String dataFormatada = dataAtual.format(formatter);
+
+        return dataFormatada;
+    }
+
     public VendaFrame() {
+        this.listProdSelected = new ArrayList<>();
         initComponents();
         carregarTabela();
         try {
-            
+
             this.cli = ClientesService.buscaCliente();
             for (ClienteDTO clienteDTO : cli) {
                 jComboBox1.addItem(clienteDTO.getNome());
@@ -55,7 +83,7 @@ public class VendaFrame extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println(ex);
         }
-        
+
     }
 
     /**
@@ -266,22 +294,22 @@ public class VendaFrame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ItemVendaDTO itemVenda = new ItemVendaDTO();
-        itemVenda.setProdutoID(selectedCli.getId());
+        itemVenda.setProduto(selectedPro);
         itemVenda.setQuantidade(Integer.parseInt(jTextField1.getText()));
         itemVenda.setValorUnitario(selectedPro.getValor());
         itemVenda.setValorTotal(selectedPro.getValor() * Integer.parseInt(jTextField1.getText()));
-        
+        listProdSelected.add(itemVenda);
         String descricao = selectedPro.getDescricao();
         String categoria = selectedPro.getCategoria();
         String valorUnitario = selectedPro.getValor().toString();
         String quantidade = String.valueOf(itemVenda.getQuantidade());
         String valorTotal = String.valueOf(itemVenda.getValorTotal());
-        
-        if(linhaSelecionada >= 0 ){
+
+        if (linhaSelecionada >= 0) {
             modelo.removeRow(linhaSelecionada);
             modelo.insertRow(linhaSelecionada, new Object[]{descricao, categoria, valorUnitario, quantidade, valorTotal});
-        }else {
-        modelo.addRow(new Object[]{descricao, categoria, valorUnitario, quantidade, valorTotal});
+        } else {
+            modelo.addRow(new Object[]{descricao, categoria, valorUnitario, quantidade, valorTotal});
             JOptionPane.showMessageDialog(this, "SUCESSO");
         }
         Double total = Double.parseDouble(tfTotal.getText());
@@ -294,7 +322,24 @@ public class VendaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     String observacao = obs.getText();
+        String observacao = obs.getText();
+        VendaDTO vendaBody = new VendaDTO();
+        vendaBody.setCliente(selectedCli);
+        vendaBody.setData(getDataAtualFormatada());
+        vendaBody.setObservacoes(observacao);
+        vendaBody.setTotal(Double.parseDouble(tfTotal.getText()));
+        try {
+            VendaDTO vendaReq = VendaService.salvarVenda(vendaBody);
+            for (ItemVendaDTO itemVendaDTO : listProdSelected) {
+                itemVendaDTO.setVenda(vendaReq);
+                ItemVendaDTO reqItemVenda = ItemVendaService.salvarItemVenda(itemVendaDTO);
+                System.out.println("salvou item venda");
+            }
+            JOptionPane.showMessageDialog(this, "VENDA CADASTRADA COM SUCESSO");
+            this.dispose();
+        } catch (Exception ex) {
+            Logger.getLogger(VendaFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
