@@ -1,28 +1,81 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vendas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtrar Vendas por Data</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="date"] {
+            padding: 8px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-<h1>Hello World</h1>
-<table class="table-container">
-    <thead>
-    <tr>
-        <th>Cliente</th>
-        <th>Medico</th>
-        <th>Data/Hora da consulta</th>
-    </tr>
-    </thead>
+<div class="container">
+    <h1>Filtrar Vendas por Data</h1>
+    <form id="filtroForm">
+        <label for="data">Selecione uma data:</label>
+        <input type="date" id="data" name="data" required>
+        <button type="submit">Filtrar</button>
+    </form>
+</div>
 
-    <tbody>
-    <tr th:each="atendimento : ${atendimentos}">
-        <td th:text="${atendimento.medico.nome}"></td>
-        <td th:text="${atendimento.paciente.nome}"></td>
-        <td th:text="${atendimento.data_hora}"></td>
-    </tr>
-    </tbody>
-</table>
+<script>
+    document.getElementById("filtroForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Evita que o formulário seja submetido normalmente
+
+        var formData = new FormData(this); // Obtém os dados do formulário
+
+        // Exibe os dados do formulário no console (substitua isso pela lógica do seu backend)
+        for (var pair of formData.entries()) {
+            console.log(pair[0] + ": " + pair[1]);
+        }
+
+        // Aqui você pode enviar os dados do formulário para o backend usando AJAX
+        // Exemplo:
+        // fetch("/filtrar", {
+        //     method: "POST",
+        //     body: formData
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     // Faça algo com a resposta do backend
+        // })
+        // .catch(error => {
+        //     console.error("Erro:", error);
+        // });
+    });
+</script>
 </body>
 </html>
