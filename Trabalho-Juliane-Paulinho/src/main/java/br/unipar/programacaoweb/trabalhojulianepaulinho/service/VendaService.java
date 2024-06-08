@@ -36,6 +36,9 @@ public class VendaService {
         this.vendaRepository.deleteById(id);
     }
 
+    public List<Venda> findByData(String data) {
+        return this.vendaRepository.findByData(data);
+    }
 
 
 }

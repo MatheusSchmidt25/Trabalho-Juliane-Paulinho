@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface VendaRepository extends JpaRepository<Venda, Integer> {
 
-
+    List<Venda> findByData(String data);
 }

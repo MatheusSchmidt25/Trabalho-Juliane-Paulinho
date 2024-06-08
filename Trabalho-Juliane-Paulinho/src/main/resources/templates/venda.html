@@ -44,7 +44,7 @@
             margin-top: 8px;
         }
 
-        input[type="text"] {
+        input[type="date"] {
             width: calc(100% - 24px);
             padding: 10px;
             border: 1px solid #ccc;
@@ -100,27 +100,24 @@
 <body>
 <div class="container">
     <h1>Filtre por uma Data</h1>
-    <form id="filtroForm">
-        <label for="data">Selecione uma data:</label>
-        <input type="date" id="data" name="data" required>
+
+    <form id="filtroForm" method="post" action="/venda/filtrar">
+        <label for="data">Digite uma data no formato (dd/MM/aaaa):</label>
+        <input type="text" id="data" name="data" placeholder="dd/MM/yyyy" pattern="\d{2}/\d{2}/\d{4}" required>
+
         <button type="submit">Filtrar</button>
     </form>
-
-
 </div>
 <h1>Lista de Vendas</h1>
 <table>
     <thead>
     <tr>
-
         <th>ID</th>
         <th>Nome</th>
         <th>Telefone</th>
         <th>Data</th>
         <th>Observação</th>
         <th>Valor Total</th>
-
-
     </tr>
     </thead>
     <tbody>
@@ -131,41 +128,12 @@
         <td th:text="${venda.data}"></td>
         <td th:text="${venda.observacoes}"></td>
         <td th:text="${venda.total}"></td>
-
-
-
-
     </tr>
     </tbody>
 </table>
 
 
 
-<script>
-    document.getElementById("filtroForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Evita que o formulário seja submetido normalmente
 
-        var formData = new FormData(this); // Obtém os dados do formulário
-
-        // Exibe os dados do formulário no console (substitua isso pela lógica do seu backend)
-        for (var pair of formData.entries()) {
-            console.log(pair[0] + ": " + pair[1]);
-        }
-
-        // Aqui você pode enviar os dados do formulário para o backend usando AJAX
-        // Exemplo:
-        // fetch("/filtrar", {
-        //     method: "POST",
-        //     body: formData
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //     // Faça algo com a resposta do backend
-        // })
-        // .catch(error => {
-        //     console.error("Erro:", error);
-        // });
-    });
-</script>
 </body>
 </html>

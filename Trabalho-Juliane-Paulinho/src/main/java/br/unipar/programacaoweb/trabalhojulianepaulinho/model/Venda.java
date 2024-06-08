@@ -1,31 +1,31 @@
-package br.unipar.programacaoweb.trabalhojulianepaulinho.model;
+    package br.unipar.programacaoweb.trabalhojulianepaulinho.model;
 
-import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+    import io.swagger.v3.oas.annotations.media.Schema;
+    import jakarta.persistence.*;
+    import lombok.Getter;
+    import lombok.Setter;
 
-import java.util.Date;
+    import java.util.Date;
 
-@Entity
-@Getter
-@Setter
-public class Venda {
+    @Entity
+    @Getter
+    @Setter
+    public class Venda {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Integer id;
 
-    private String observacoes;
+        private String observacoes;
 
-    private String data ;
+        private String data ;
 
-    private Double total;
+        private Double total;
 
-    @ManyToOne
-    @JoinColumn(name = "cliente_id" )
-    private Cliente cliente;
+        @ManyToOne
+        @JoinColumn(name = "cliente_id" )
+        private Cliente cliente;
 
 
 
-}
+    }
