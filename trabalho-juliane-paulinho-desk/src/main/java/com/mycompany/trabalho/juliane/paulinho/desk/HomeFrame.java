@@ -4,6 +4,9 @@
  */
 package com.mycompany.trabalho.juliane.paulinho.desk;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sf.jasperreports.engine.JRException;
@@ -17,6 +20,26 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class HomeFrame extends javax.swing.JFrame {
 
+    private static final String URL_DATABASE = "jdbc:postgresql://localhost:5432/TrabalhoWebDesk";
+    private static final String USUARIO = "postgres";
+    private static final String SENHA = "nuttertools";
+    
+    private static Connection conexao;
+
+    public static Connection obterConexao() throws SQLException {
+        if (conexao == null || conexao.isClosed()) {
+            conexao = DriverManager.getConnection(URL_DATABASE, USUARIO, SENHA);
+        }
+        return conexao;
+    }
+
+    public static void fecharConexao() throws SQLException {
+        if (conexao != null && !conexao.isClosed()) {
+            conexao.close();
+        }
+    }
+
+    
     /**
      * Creates new form HomeFrame
      */
@@ -97,7 +120,17 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void vendaDetalhadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaDetalhadaActionPerformed
-        
+        try {
+        // Carregar o relatório Jasper
+        // Carregar o relatório Jasper usando um caminho relativo ao classpath
+        JasperPrint jasperPrint = JasperFillManager.fillReport(HomeFrame.class.getResourceAsStream("/relatorios/relatorioDetalhado.jasper"), null, conexao);
+
+        // Exibir o relatório usando o visualizador do JasperReports
+        JasperViewer viewer = new JasperViewer(jasperPrint, false);
+        viewer.setVisible(true);
+    } catch (JRException ex) {
+        Logger.getLogger(HomeFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_vendaDetalhadaActionPerformed
 
     private void vendaTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaTotalActionPerformed

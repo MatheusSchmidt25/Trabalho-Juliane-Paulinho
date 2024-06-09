@@ -53,13 +53,13 @@ public class VendaFrame extends javax.swing.JFrame {
     }
 
     public static String getDataAtualFormatada() {
-        // Obtém a data atual
+       
         LocalDate dataAtual = LocalDate.now();
 
-        // Define o padrão de formatação
+        
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        // Formata a data atual usando o padrão
+        
         String dataFormatada = dataAtual.format(formatter);
 
         return dataFormatada;
