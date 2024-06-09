@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" language="javascript" pageWidth="900" pageHeight="842" columnWidth="860" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="19d1b7e2-e2cb-4758-8c41-110e903e514f">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="TrabalhoDesck"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+    venda.id AS venda_id,
+    venda.data AS data_venda,
+    venda.observacoes,
+    venda.total AS total_venda,
+    cliente.id AS cliente_id,
+    cliente.nome AS nome_cliente,
+    cliente.email AS email_cliente,
+    cliente.telefone AS telefone_cliente,
+    produto.id AS produto_id,
+    produto.categoria AS categoria_produto,
+    produto.descricao AS descricao_produto,
+    produto.valor AS valor_produto,
+    item_venda.quantidade,
+    item_venda.valor_unitario,
+    item_venda.valor_total
+FROM
+    venda
+INNER JOIN
+    cliente ON venda.cliente_id = cliente.id
+INNER JOIN
+    item_venda ON venda.id = item_venda.venda_id
+INNER JOIN
+    produto ON item_venda.produto_id = produto.id
+ORDER BY
+    venda.id, produto.descricao;]]>
+	</queryString>
+	<field name="venda_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="venda_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="venda_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<field name="data_venda" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="data_venda"/>
+		<property name="com.jaspersoft.studio.field.label" value="data_venda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<field name="observacoes" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="observacoes"/>
+		<property name="com.jaspersoft.studio.field.label" value="observacoes"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<field name="total_venda" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="total_venda"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_venda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<field name="cliente_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="cliente_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="cliente_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="nome_cliente" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome_cliente"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome_cliente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="email_cliente" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email_cliente"/>
+		<property name="com.jaspersoft.studio.field.label" value="email_cliente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="telefone_cliente" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="telefone_cliente"/>
+		<property name="com.jaspersoft.studio.field.label" value="telefone_cliente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="produto_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="produto_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="produto_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="categoria_produto" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="categoria_produto"/>
+		<property name="com.jaspersoft.studio.field.label" value="categoria_produto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="descricao_produto" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="descricao_produto"/>
+		<property name="com.jaspersoft.studio.field.label" value="descricao_produto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="valor_produto" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="valor_produto"/>
+		<property name="com.jaspersoft.studio.field.label" value="valor_produto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="quantidade" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="quantidade"/>
+		<property name="com.jaspersoft.studio.field.label" value="quantidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="item_venda"/>
+	</field>
+	<field name="valor_unitario" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="valor_unitario"/>
+		<property name="com.jaspersoft.studio.field.label" value="valor_unitario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="item_venda"/>
+	</field>
+	<field name="valor_total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="valor_total"/>
+		<property name="com.jaspersoft.studio.field.label" value="valor_total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="item_venda"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="20" width="860" height="30" uuid="dac7bbf0-8f38-49f5-9295-c915798695a7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório Venda Total]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="0efe1434-7a2c-439d-9a69-4488657df12d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="44fe7209-27af-4f87-8bdd-38ec2d3cd999"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Número venda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="1" width="180" height="30" uuid="97ad8ad3-13b2-4503-a0c6-31e22c280760">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="24bb6c28-b37b-4efc-a739-e99a776bc394"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Observações]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="615" y="1" width="130" height="30" uuid="c4f9c8e1-2b73-4b01-9850-acf6c91d3561">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f04d0f00-8509-4a4d-86c4-92fbea9f8b0d"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Data da venda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="113" height="30" uuid="0f35d2f5-757a-4121-aa38-1911275118d9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="02c59f68-bbc2-40c4-ad2c-19b02048cf49"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Nome do cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="770" y="0" width="100" height="30" uuid="24dd850f-cad9-45a3-b7e1-2467d4f4c0ba">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ce5f6ed2-2a9c-4d96-8625-3a82a08d556f"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Valor UN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="0" width="100" height="30" uuid="08718637-b444-44e1-b306-8ccd74ea9fae">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1ecdcc2d-5502-4f80-a861-49a8a08cfaef"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Produto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="100" height="30" uuid="5ab97d1a-ca67-4d6c-8056-72526e3ded31">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="44fe7209-27af-4f87-8bdd-38ec2d3cd999"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{venda_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="10" width="180" height="30" uuid="5ffc857d-b53e-4884-b641-b9c7220740ce">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="24bb6c28-b37b-4efc-a739-e99a776bc394"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{observacoes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="610" y="10" width="140" height="30" uuid="9db376b1-cf80-48ab-b644-531b5a64ff3f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f04d0f00-8509-4a4d-86c4-92fbea9f8b0d"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_venda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="10" width="113" height="30" uuid="310f02f8-8b2d-4ce4-a343-0c10bf9d0aa9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="02c59f68-bbc2-40c4-ad2c-19b02048cf49"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="770" y="11" width="100" height="30" uuid="d17ed330-9390-4b15-851c-50933e5f3823">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ce5f6ed2-2a9c-4d96-8625-3a82a08d556f"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor_produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="11" width="100" height="30" uuid="ac91746e-f3ec-470f-be01-416cf323913d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1ecdcc2d-5502-4f80-a861-49a8a08cfaef"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descricao_produto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

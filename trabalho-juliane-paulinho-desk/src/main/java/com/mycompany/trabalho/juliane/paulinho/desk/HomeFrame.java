@@ -4,6 +4,13 @@
  */
 package com.mycompany.trabalho.juliane.paulinho.desk;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+
 /**
  *
  * @author aluno
@@ -28,7 +35,8 @@ public class HomeFrame extends javax.swing.JFrame {
 
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        vendaDetalhada = new javax.swing.JButton();
+        vendaTotal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,10 +49,17 @@ public class HomeFrame extends javax.swing.JFrame {
 
         jLabel2.setText("MENU");
 
-        jButton3.setText("Relatórios");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        vendaDetalhada.setText("Relatório venda detalhada");
+        vendaDetalhada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                vendaDetalhadaActionPerformed(evt);
+            }
+        });
+
+        vendaTotal.setText("Relatório venda total");
+        vendaTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendaTotalActionPerformed(evt);
             }
         });
 
@@ -53,26 +68,25 @@ public class HomeFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(37, 37, 37))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(175, 175, 175)
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
+            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(vendaDetalhada, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(vendaTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(106, 106, 106)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addGap(54, 54, 54)
+                .addComponent(jButton2)
+                .addGap(54, 54, 54)
+                .addComponent(vendaTotal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(vendaDetalhada)
+                .addGap(42, 42, 42))
         );
 
         pack();
@@ -82,9 +96,13 @@ public class HomeFrame extends javax.swing.JFrame {
         new VendaFrame().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void vendaDetalhadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaDetalhadaActionPerformed
+        
+    }//GEN-LAST:event_vendaDetalhadaActionPerformed
+
+    private void vendaTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaTotalActionPerformed
+        
+    }//GEN-LAST:event_vendaTotalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,7 +135,8 @@ public class HomeFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton vendaDetalhada;
+    private javax.swing.JButton vendaTotal;
     // End of variables declaration//GEN-END:variables
 }

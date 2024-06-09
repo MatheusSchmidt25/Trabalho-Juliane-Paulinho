@@ -15,6 +15,8 @@
     <description>Trabalho-Juliane-Paulinho</description>
     <properties>
         <java.version>20</java.version>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
