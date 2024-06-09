@@ -46,6 +46,28 @@ public class HomeFrame extends javax.swing.JFrame {
     public HomeFrame() {
         initComponents();
     }
+    
+    public void gerarRelatorio(){
+        try {
+            
+            //Responsável em criar/carregar o relatório
+            String relatorioPath = "relatorios/RelAluno.jasper";
+            JasperPrint printer = JasperFillManager.
+                    fillReport(relatorioPath, 
+                            null, conn);
+            
+            //Exibir o relatório
+            JasperViewer view = 
+                    new JasperViewer(printer, false);
+            
+            view.setVisible(true);
+            
+        } catch (JRException ex) {
+            Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -120,17 +142,8 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void vendaDetalhadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaDetalhadaActionPerformed
-        try {
-        // Carregar o relatório Jasper
-        // Carregar o relatório Jasper usando um caminho relativo ao classpath
-        JasperPrint jasperPrint = JasperFillManager.fillReport(HomeFrame.class.getResourceAsStream("/relatorios/relatorioDetalhado.jasper"), null, conexao);
-
-        // Exibir o relatório usando o visualizador do JasperReports
-        JasperViewer viewer = new JasperViewer(jasperPrint, false);
-        viewer.setVisible(true);
-    } catch (JRException ex) {
-        Logger.getLogger(HomeFrame.class.getName()).log(Level.SEVERE, null, ex);
-    }
+        
+        
     }//GEN-LAST:event_vendaDetalhadaActionPerformed
 
     private void vendaTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaTotalActionPerformed

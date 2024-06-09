@@ -299,6 +299,9 @@ public class VendaFrame extends javax.swing.JFrame {
      }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        
+        
         ItemVendaDTO itemVenda = new ItemVendaDTO();
         itemVenda.setProduto(selectedPro);
         itemVenda.setQuantidade(Integer.parseInt(jTextField1.getText()));
@@ -310,6 +313,8 @@ public class VendaFrame extends javax.swing.JFrame {
         String valorUnitario = selectedPro.getValor().toString();
         String quantidade = String.valueOf(itemVenda.getQuantidade());
         String valorTotal = String.valueOf(itemVenda.getValorTotal());
+        
+        
 
         if (linhaSelecionada >= 0) {
             modelo.removeRow(linhaSelecionada);
