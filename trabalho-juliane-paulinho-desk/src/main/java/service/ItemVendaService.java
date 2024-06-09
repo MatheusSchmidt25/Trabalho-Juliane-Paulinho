@@ -37,28 +37,23 @@ public class ItemVendaService {
             conexao.setRequestProperty("Content-Type", "application/json");
             conexao.setDoOutput(true);
 
-            // Converte a venda para JSON
             ObjectMapper mapper = new ObjectMapper();
             String body = mapper.writeValueAsString(itemVenda);
 
-            // Escreve o JSON no corpo da requisição
             try (OutputStream os = conexao.getOutputStream()) {
                 byte[] input = body.getBytes(StandardCharsets.UTF_8);
                 os.write(input, 0, input.length);
             }
 
-            // Verifica o código de resposta da requisição
             if (conexao.getResponseCode() != SUCESSO) {
                 throw new RuntimeException(
                         "Erro ao conectar: " + conexao.getResponseMessage());
             }
 
-            // Lê a resposta da requisição
             BufferedReader resposta = new BufferedReader(
                     new InputStreamReader(conexao.getInputStream()));
             String json = Util.converteJsonString(resposta);
 
-            // Converte a resposta de JSON para objeto VendaDTO
             ItemVendaDTO dto = unmarshalFromJson(json);
             return dto;
         } catch (Exception ex) {
