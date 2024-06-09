@@ -60,7 +60,7 @@ public class ItemVendaService {
             throw new Exception("Erro ao retornar produto: " + ex);
         } finally {
             if (conexao != null) {
-                conexao.disconnect(); // Fecha a conexão
+                conexao.disconnect(); 
             }
         }
     }
