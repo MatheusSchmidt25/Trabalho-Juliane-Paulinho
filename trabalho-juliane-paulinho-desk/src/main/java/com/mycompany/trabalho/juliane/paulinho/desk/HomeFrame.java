@@ -7,12 +7,7 @@ package com.mycompany.trabalho.juliane.paulinho.desk;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
+
 
 /**
  *
@@ -40,34 +35,15 @@ public class HomeFrame extends javax.swing.JFrame {
     }
 
     
-    /**
-     * Creates new form HomeFrame
-     */
+    
     public HomeFrame() {
         initComponents();
     }
     
-    public void gerarRelatorio(){
-        try {
-            
-            //Responsável em criar/carregar o relatório
-            String relatorioPath = "relatorios/RelAluno.jasper";
-            JasperPrint printer = JasperFillManager.
-                    fillReport(relatorioPath, 
-                            null, conn);
-            
-            //Exibir o relatório
-            JasperViewer view = 
-                    new JasperViewer(printer, false);
-            
-            view.setVisible(true);
-            
-        } catch (JRException ex) {
-            Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+   
+
         
-        
-    }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -185,4 +161,5 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JButton vendaDetalhada;
     private javax.swing.JButton vendaTotal;
     // End of variables declaration//GEN-END:variables
+
 }

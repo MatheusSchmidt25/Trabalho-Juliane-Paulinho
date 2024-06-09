@@ -61,7 +61,7 @@ public class VendaService {
             throw new Exception("Erro ao retornar produto: " + ex);
         } finally {
             if (conexao != null) {
-                conexao.disconnect(); 
+                conexao.disconnect();
             }
         }
     }
