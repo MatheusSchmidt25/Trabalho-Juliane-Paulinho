@@ -19,14 +19,14 @@ public class ConexaoPostgres {
     private static final String DRIVER = "org.postgresql.Driver";
     private static final String URL = "jdbc:postgresql://localhost:5432/TrabalhoWebDesk";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "nuttertools";
+    private static final String PASSWORD = "postgres";
     
     //abrir conexão com o BD
     public static Connection getConection(){
         
         try {
             Class.forName(DRIVER);
-            
+           
             return DriverManager
                     .getConnection(URL,
                             USER,

@@ -7,7 +7,7 @@ package com.mycompany.trabalho.juliane.paulinho.desk;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+import dao.RelatorioDAO;
 
 /**
  *
@@ -18,7 +18,7 @@ public class HomeFrame extends javax.swing.JFrame {
     private static final String URL_DATABASE = "jdbc:postgresql://localhost:5432/TrabalhoWebDesk";
     private static final String USUARIO = "postgres";
     private static final String SENHA = "nuttertools";
-    
+
     private static Connection conexao;
 
     public static Connection obterConexao() throws SQLException {
@@ -34,16 +34,9 @@ public class HomeFrame extends javax.swing.JFrame {
         }
     }
 
-    
-    
     public HomeFrame() {
         initComponents();
     }
-    
-   
-
-        
-  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -118,12 +111,14 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void vendaDetalhadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaDetalhadaActionPerformed
-        
-        
+        RelatorioDAO dao = new RelatorioDAO();
+        dao.gerarRelatorio();
+
     }//GEN-LAST:event_vendaDetalhadaActionPerformed
 
     private void vendaTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaTotalActionPerformed
-        
+        RelatorioDAO dao = new RelatorioDAO();
+        dao.gerarRelatorio2();
     }//GEN-LAST:event_vendaTotalActionPerformed
 
     /**
